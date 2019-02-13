@@ -7,7 +7,7 @@ const isAuthenticated = require('../../services/Auth');
 const Managers = require('../controllers/managers/manager')
 
 //managers routes
-app.get('/managers',isAuthenticated, Managers.index);
+app.get('/managers', Managers.index);
 app.get('/managers/:managerId', Managers.findBy);
 app.post('/managers', Managers.create);
 
