@@ -1,18 +1,19 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const chalk = require('chalk');
 const morgan = require('morgan');
 const mongoose = require('mongoose')
 
-require('dotenv').config()
 const PORT = process.env.PORT || 3001;
+const MONGODB_URI = process.env.MONGODB_URI
 
 //import api routes
 const api = require('./src/routes/api');
 
 //setup mongoose and mongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/mr-manager',{
-  useNewUrlParser: true
+mongoose.connect(MONGODB_URI,{
+  useNewUrlParser: true, useCreateIndex: true
 });
 
 mongoose.connection.on('connected', () => {
