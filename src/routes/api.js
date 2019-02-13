@@ -1,13 +1,18 @@
 const { Router } = require('express');
 const app = Router();
 
-// const Companies = require('../controllers/companies/companies');
-//
-// //company routes
-// app.get('/companies', Companies.index);
-// app.post('/companies', Companies.create);
-// app.get('/companies/:id', Companies.findBy);
-// app.delete('/companies/:id', Companies.deleteBy);
-// app.put('/companies/:id', Companies.update);
+//requerir Auth
+const isAuthenticated = require('../../services/Auth');
+
+const Managers = require('../controllers/managers/manager')
+
+//managers routes
+app.get('/managers',isAuthenticated, Managers.index);
+app.get('/managers/:managerId', Managers.findBy);
+app.post('/managers', Managers.create);
+
+// auth routes
+app.post('/auth/signup', Managers.signup)
+app.post('/auth/login', Managers.login)
 
 module.exports = app;
