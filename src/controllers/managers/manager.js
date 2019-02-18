@@ -45,6 +45,7 @@ const findBy = (req, res) => {
         _id: mongoose.Types.ObjectId(),
         name: req.body.name,
         email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
         password: req.body.password
       })
 
@@ -179,6 +180,7 @@ const deleteBy = (req, res) => {
     const updateBy = (request,response) =>{
   	const name = request.body.name;
   	const email = request.body.email;
+    const phoneNumber = request.body.phoneNumber;
   	const password = request.body.password;
 
   		Manager
@@ -189,6 +191,7 @@ const deleteBy = (req, res) => {
   				if(result) {
   					manager.name = name;
   					manager.email = email;
+            manager.phoneNumber = phoneNumber;
 
   				manager.save()
   						.then(saved => {
@@ -211,6 +214,7 @@ const deleteBy = (req, res) => {
 
   						manager.name = name;
   						manager.email = email;
+              manager.phoneNumber = phoneNumber;
   						manager.password = hash;
 
   						manager

@@ -10,9 +10,7 @@ const Properties = require('../controllers/properties/property')
 app.get('/managers', isAuthenticated, Managers.index);
 app.get('/managers/:managerId', isAuthenticated, Managers.findBy);
 app.post('/managers', isAuthenticated, Managers.create);
-app.put('/managers/:managerId', isAuthenticated, Managers.updateBy);
 app.delete('/managers/:managerId', isAuthenticated, Managers.deleteBy);
-// app.get('managers/properties/:managerId', isAuthenticated, Managers.properties)
 app.get('/managers/:managerId/properties', isAuthenticated, Managers.properties)
 
 //properties routes
