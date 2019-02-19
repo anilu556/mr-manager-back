@@ -27,8 +27,11 @@ const create = (req, res) => {
     _id: mongoose.Types.ObjectId(),
     managerId: req.body.managerId,
     name: req.body.name,
-    adress: req.body.adress
-          })
+    streetNumber: req.body.streetNumber,
+    colonia: req.body.colonia,
+    city: req.body.city
+    })
+    console.log(newProperty)
 
           newProperty
             .save()
