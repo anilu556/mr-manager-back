@@ -3,6 +3,7 @@ const Property = require('../../models/Property');
 const bcrypt = require('bcrypt');
 //requerimos jwt
 const jwt = require('jsonwebtoken');
+const Department = require('../../models/Department');
 
 const index = (req, res) =>{
 	Property
@@ -65,23 +66,25 @@ const deleteBy = (req, res) => {
     		})
     }
 
-  const removeBy = (req, res) =>{
-	Project
-	.deleteOne({_id:req.params.projectId})
-		.then(data => {
-			res
-				.json({
-					type: "Project Removed",
-					data: data
-				})
-				.status(200)
-		})
-		.catch(err =>{
-			console.log(`caugth error: ${err}`);
-			return res.status(500).json(err);
-		})
+const getDepartmentsBy = (req, res) => {
+  console.log(req.params.propertyId)
+  Department
+   .find({propertyId: req.params.propertyId})
+   .exec()
+   .then(data => {
+     res
+       .status(200)
+       .json({
+         type: 'Finding departments',
+         data: data
+       })
+   })
+   .catch(err => {
+      console.log(`caugth err: ${err}`);
+      return res.status(500).json(err)
+       })
 }
 
 module.exports = {
- index, create, deleteBy
+ index, create, deleteBy, getDepartmentsBy
 }

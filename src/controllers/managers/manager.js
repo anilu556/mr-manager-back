@@ -237,7 +237,7 @@ const deleteBy = (req, res) => {
   		});
   	}
 
- const properties = (req, res) => {
+ const getPropertiesBy = (req, res) => {
    console.log(req.params.managerId)
    Property
     .find({managerId: req.params.managerId})
@@ -257,5 +257,5 @@ const deleteBy = (req, res) => {
  }
 
 module.exports = {
-  index, findBy, create, signup, login, deleteBy, updateBy, properties
+  index, findBy, create, signup, login, deleteBy, updateBy, getPropertiesBy
 }
