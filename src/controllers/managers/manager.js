@@ -83,7 +83,6 @@ const findBy = (req, res) => {
               const newManager = new Manager ({
                 _id: mongoose.Types.ObjectId(),
                 name: req.body.name,
-                userName: req.body.userName,
                 email: req.body.email,
                 password: hash
               })
@@ -111,7 +110,7 @@ const findBy = (req, res) => {
 
 const login = (request, response) => {
 Manager
-  .find({userName: request.body.userName})
+  .find({email: request.body.email})
   .exec()
   .then(manager =>{
     if (manager.length > 0) {
@@ -127,7 +126,7 @@ Manager
         //se crea token
         if (result) {
           const token = jwt.sign({
-            userName: manager[0].userName,
+            email: manager[0].email,
             password: manager[0].password,
           }, process.env.JWT_SECRETKEY, {
             expiresIn: '1hr'
