@@ -8,6 +8,7 @@ const expensesSchema = new Schema(
     quantity: {type: Number,required: true},
     date: {type: String,required: true},
     departmentId: {type: Schema.Types.ObjectId, ref: 'Department'},
+    balanceId: {type: Schema.Types.ObjectId, ref: 'Balance'}
   },
   { timestamps: true }
 )

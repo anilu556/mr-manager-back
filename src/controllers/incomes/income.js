@@ -21,31 +21,32 @@ const index = (req, res) =>{
 				return res.status(500).json(err);
 			})
 	}
-
-  const create = (req, res) => {
-    const newIncome = new Income({
-      _id: mongoose.Types.ObjectId(),
-      concept: req.body.concept,
-      quantity: req.body.quantity,
-      date: req.body.date,
-      departmentId: req.body.departmentId,
-      })
-
-            newIncome
-              .save()
-              .then( data => {
-                res.json({
-                  type: 'New income created',
-                  data: data
-                })
-                .status(200)
-              })
-              .catch(err => {
-                console.log(`Caught error: ${err}`);
-                return res.status(500).json({message: 'Post failed'})
-              })
-            }
+  //
+  // const create = (req, res) => {
+  //   const newIncome = new Income({
+  //     _id: mongoose.Types.ObjectId(),
+  //     concept: req.body.concept,
+  //     quantity: req.body.quantity,
+  //     date: req.body.date,
+  //     departmentId: req.params.departmentId,
+  //     balanceId: req.body.balanceId
+  //     })
+  //
+  //           newIncome
+  //             .save()
+  //             .then( data => {
+  //               res.json({
+  //                 type: 'New income created',
+  //                 data: data
+  //               })
+  //               .status(200)
+  //             })
+  //             .catch(err => {
+  //               console.log(`Caught error: ${err}`);
+  //               return res.status(500).json({message: 'Post failed'})
+  //             })
+  //           }
 
 module.exports = {
-  index, create
+  index
 }

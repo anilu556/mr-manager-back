@@ -8,6 +8,7 @@ const Properties = require('../controllers/properties/property')
 const Departments = require('../controllers/departments/department')
 const Incomes = require('../controllers/incomes/income')
 const Expenses = require('../controllers/expenses/expense')
+const Balances = require('../controllers/balances/balance')
 
 //managers routes
 app.get('/managers', isAuthenticated, Managers.index);
@@ -31,11 +32,14 @@ app.get('/departments/:departmentId/expenses', isAuthenticated, Departments.getE
 
 //income routes
 app.get('/incomes', isAuthenticated, Incomes.index);
-app.post('/departments/:departmentId/incomes', isAuthenticated, Incomes.create);
+app.post('/departments/:departmentId/incomes', isAuthenticated, Balances.createIncomes);
 
 //expense routes
 app.get('/expenses', isAuthenticated, Expenses.index);
-app.post('/departments/:departmentId/expenses', isAuthenticated, Expenses.create);
+app.post('/departments/:departmentId/expenses', isAuthenticated, Balances.createExpenses);
+
+//balanceRoute
+app.get('property/:propertyId/balances', isAuthenticated, Properties.getBalanceBy);
 
 // auth routes
 app.post('/auth/signup', Managers.signup)

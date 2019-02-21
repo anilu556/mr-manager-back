@@ -8,7 +8,7 @@ const balanceSchema = new Schema(
     expenses: { type: Number, required: true},
     incomes: {type: Number, required: true},
     period: {type: String, required: true},
-    departmentId: {type: Schema.Types.ObjectId, ref: 'Department'}
+    propertyId: {type: Schema.Types.ObjectId, ref: 'Property'}
   },
   { timestamps: true }
 )

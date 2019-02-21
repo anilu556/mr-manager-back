@@ -85,6 +85,27 @@ const getDepartmentsBy = (req, res) => {
        })
 }
 
+
+const getBalanceBy = (req, res) => {
+  console.log(req.params.propertyId)
+  Balance
+   .find({propertyId: req.params.propertyId})
+   .exec()
+   .then(data => {
+     res
+       .status(200)
+       .json({
+         type: 'Finding balance',
+         data: data
+       })
+   })
+   .catch(err => {
+      console.log(`caugth err: ${err}`);
+      return res.status(500).json(err)
+       })
+}
+
+
 module.exports = {
- index, create, deleteBy, getDepartmentsBy
+ index, create, deleteBy, getDepartmentsBy, getBalanceBy
 }
