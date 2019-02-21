@@ -6,6 +6,8 @@ const isAuthenticated = require('../../services/Auth');
 const Managers = require('../controllers/managers/manager')
 const Properties = require('../controllers/properties/property')
 const Departments = require('../controllers/departments/department')
+const Incomes = require('../controllers/incomes/income')
+const Expenses = require('../controllers/expenses/expense')
 
 //managers routes
 app.get('/managers', isAuthenticated, Managers.index);
@@ -24,6 +26,16 @@ app.get('/properties/:propertyId/departments', isAuthenticated, Properties.getDe
 app.get('/departments', isAuthenticated, Departments.index);
 app.post('/properties/:propertyId/departments', isAuthenticated, Departments.create);
 app.delete ('/departments/:departmentId', isAuthenticated, Departments.deleteBy);
+app.get('/departments/:departmentId/incomes', isAuthenticated, Departments.getIncomesBy);
+app.get('/departments/:departmentId/expenses', isAuthenticated, Departments.getExpensesBy);
+
+//income routes
+app.get('/incomes', isAuthenticated, Incomes.index);
+app.post('/departments/:departmentId/incomes', isAuthenticated, Incomes.create);
+
+//expense routes
+app.get('/expenses', isAuthenticated, Expenses.index);
+app.post('/departments/:departmentId/expenses', isAuthenticated, Expenses.create);
 
 // auth routes
 app.post('/auth/signup', Managers.signup)
