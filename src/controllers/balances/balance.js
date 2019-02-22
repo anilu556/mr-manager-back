@@ -98,10 +98,10 @@ Balance.find({ period: dateYM, propertyId: propertyId }).then(function (dateBala
 
     Balance.findOne({
       _id: dateBalan[0]._id
-    }).then(balance => {
-      balance.balance = resBalance
-      balance.expenses = sumExpenses
-      balance.save()
+    }).then(data => {
+      data.balance = resBalance
+      data.expenses = sumExpenses
+      data.save()
     })
 
     console.log(dateBalan[0])
