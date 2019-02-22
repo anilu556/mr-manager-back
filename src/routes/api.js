@@ -39,7 +39,7 @@ app.get('/expenses', isAuthenticated, Expenses.index);
 app.post('/departments/:departmentId/expenses', isAuthenticated, Balances.createExpenses);
 
 //balanceRoute
-app.get('property/:propertyId/balances', isAuthenticated, Properties.getBalanceBy);
+app.get('/properties/:propertyId/balances', isAuthenticated, Properties.getBalance);
 
 // auth routes
 app.post('/auth/signup', Managers.signup)

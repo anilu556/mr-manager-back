@@ -105,6 +105,7 @@ const getExpensesBy = (req, res) => {
      	})
    }
 
+
 module.exports = {
   index, create, deleteBy, getIncomesBy, getExpensesBy
 }

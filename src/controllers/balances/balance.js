@@ -57,7 +57,8 @@ const createIncomes = (req, res) => {
         quantity: quantity,
         date: date,
         departmentId: department,
-        balanceId: newBalanceId
+        balanceId: newBalanceId,
+        propertyId: propertyId
       })
       console.log(newIncome)
       newIncome
@@ -124,7 +125,8 @@ Balance.find({ period: dateYM, propertyId: propertyId }).then(function (dateBala
     quantity: quantity,
     date: date,
     departmentId: department,
-    balanceId: newBalanceId
+    balanceId: newBalanceId,
+    propertyId: propertyId
   })
   console.log(newExpense)
   newExpense

@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 //requerimos jwt
 const jwt = require('jsonwebtoken');
 const Department = require('../../models/Department');
+const Balance = require('../../models/Balance');
 
 const index = (req, res) =>{
 	Property
@@ -85,8 +86,7 @@ const getDepartmentsBy = (req, res) => {
        })
 }
 
-
-const getBalanceBy = (req, res) => {
+const getBalance = (req, res) => {
   console.log(req.params.propertyId)
   Balance
    .find({propertyId: req.params.propertyId})
@@ -106,6 +106,7 @@ const getBalanceBy = (req, res) => {
 }
 
 
+
 module.exports = {
- index, create, deleteBy, getDepartmentsBy, getBalanceBy
+ index, create, deleteBy, getDepartmentsBy, getBalance
 }
