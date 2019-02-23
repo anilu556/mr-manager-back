@@ -18,28 +18,28 @@ app.delete('/managers/:managerId', isAuthenticated, Managers.deleteBy);
 app.get('/managers/:managerId/properties', isAuthenticated, Managers.getPropertiesBy);
 
 //properties routes
-app.get('/properties', isAuthenticated, Properties.index);
-app.post('/managers/:managerId/properties', isAuthenticated, Properties.create);
-app.delete ('/properties/:propertyId', isAuthenticated, Properties.deleteBy);
-app.get('/properties/:propertyId/departments', isAuthenticated, Properties.getDepartmentsBy);
+app.get('/properties', Properties.index);
+app.post('/managers/:managerId/properties', Properties.create);
+app.delete ('/properties/:propertyId', Properties.deleteBy);
+app.get('/properties/:propertyId/departments', Properties.getDepartmentsBy);
 
 //departments routes
-app.get('/departments', isAuthenticated, Departments.index);
-app.post('/properties/:propertyId/departments', isAuthenticated, Departments.create);
-app.delete ('/departments/:departmentId', isAuthenticated, Departments.deleteBy);
-app.get('/departments/:departmentId/incomes', isAuthenticated, Departments.getIncomesBy);
-app.get('/departments/:departmentId/expenses', isAuthenticated, Departments.getExpensesBy);
+app.get('/departments', Departments.index);
+app.post('/properties/:propertyId/departments', Departments.create);
+app.delete ('/departments/:departmentId', Departments.deleteBy);
+app.get('/departments/:departmentId/incomes', Departments.getIncomesBy);
+app.get('/departments/:departmentId/expenses', Departments.getExpensesBy);
 
 //income routes
-app.get('/incomes', isAuthenticated, Incomes.index);
-app.post('/departments/:departmentId/incomes', isAuthenticated, Balances.createIncomes);
+app.get('/incomes', Incomes.index);
+app.post('/departments/:departmentId/incomes', Balances.createIncomes);
 
 //expense routes
-app.get('/expenses', isAuthenticated, Expenses.index);
-app.post('/departments/:departmentId/expenses', isAuthenticated, Balances.createExpenses);
+app.get('/expenses', Expenses.index);
+app.post('/departments/:departmentId/expenses', Balances.createExpenses);
 
 //balanceRoute
-app.get('/properties/:propertyId/balances', isAuthenticated, Properties.getBalance);
+app.get('/properties/:propertyId/balances', Properties.getBalance);
 
 // auth routes
 app.post('/auth/signup', Managers.signup)
