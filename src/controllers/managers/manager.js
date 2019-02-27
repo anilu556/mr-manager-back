@@ -64,49 +64,49 @@ const findBy = (req, res) => {
         })
       }
 
-    const signup = (req, res) => {
-      Manager
-        .find({email: req.body.email})
-        .exec()
-        .then(managers => {
-          if (managers.length < 1){
-            //save new user using bcrypt
-            bcrypt.hash(req.body.password, 10, (error, hash) => {
-              if (error) {
-                return res
-                .status(500)
-                .json({
-                  message: error
-                })
-              }
-              //create new manager
-              const newManager = new Manager ({
-                _id: mongoose.Types.ObjectId(),
-                name: req.body.name,
-                email: req.body.email,
-                password: hash
-              })
 
-              newManager
-                .save()
-                .then(saved => {
-                  res
-                  .status(200)
+   const signup = (req, res) => {
+        Manager
+          .find({email: req.body.email})
+          .exec()
+          .then(managers => {
+            if (managers.length < 1){
+              //save new user using bcrypt
+              bcrypt.hash(req.body.password, 10, (error, hash) => {
+                if (error) {
+                  return res
+                  .status(500)
                   .json({
-                    message: 'Manager created succesfully',
-                    data: saved
-                  });
+                    message: error
+                  })
+                }
+                //create new user
+                const newManager = new Manager ({
+                  _id: mongoose.Types.ObjectId(),
+  				        name: req.body.name,
+  				        email: req.body.email,
+  				        password: hash
                 })
-            });
-          } else {
-            res
-              .status(422)
-              .json({
-                message: 'Manager already exists'
-              })
-          }
-        })
-    }
+                newManager
+                  .save()
+                  .then(saved => {
+                    res
+                    .status(200)
+                    .json({
+                      message: 'Manager created succesfully',
+                      data: saved
+                    });
+                  })
+              });
+            } else {
+              res
+                .status(422)
+                .json({
+                  message: 'Manager already exists'
+                })
+            }
+          })
+      }
 
 const login = (request, response) => {
 Manager
